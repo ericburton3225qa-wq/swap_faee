@@ -1,0 +1,12 @@
+Deep-Live-Cam/
+__pycache__/
+build/
+dist/
+gfpgan/
+venv/
+models/
+# Ignore model files
+*.onnx
+*.zip
+*.pth
+*.jpg
