@@ -89,6 +89,31 @@ def load_source_face(source_path):
     SOURCE_FACE = src_faces[0]
     print(f"✓ Source face loaded from: {source_path}")
 
+def load_source_face_from_array(face_img):
+    """
+    Load source face from a numpy array (uploaded image)
+    """
+    global SOURCE_FACE, FACE_SWAPPER
+
+    if face_img is None:
+        raise RuntimeError("No image provided for source face.")
+
+    # Get FaceAnalyser and detect face
+    app = get_face_analyser()
+    src_faces = app.get(face_img)
+
+    if len(src_faces) == 0:
+        raise RuntimeError("No faces found in uploaded source image.")
+
+    SOURCE_FACE = src_faces[0]
+
+    # Re-initialize the face swapper so it uses the new source face
+    FACE_SWAPPER = None  # Reset swapper singleton
+    get_face_swapper()   # Recreate swapper instance
+
+    print("✓ Source face loaded and swapper reset")
+
+
 def swap_faces_in_frame(frame, enhance=False):
     """Swap source face into all faces detected in the frame"""
     global SOURCE_FACE
