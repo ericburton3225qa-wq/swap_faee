@@ -73,18 +73,13 @@ With GFPGAN enhancement:
 python test_insight.py -s source_image.jpg -m -e
 ```
 
-### GUI Version (Tkinter)
+### Server and Client Version (Tkinter)
 
 ```bash
-python test_insight_ui.py
+uvicorn ui_server:app --host 127.0.0.1 --port 8000
+python ui_client.py
 ```
 
-Features:
-- Source image preview
-- Camera ID selection
-- Mirror and enhancement toggles
-- Real-time FPS display
-- Start/Stop controls
 
 ### Simple Camera Viewer
 
@@ -92,13 +87,6 @@ Features:
 python test_camera.py -m
 ```
 
-### Image-to-Image Face Swapping
-
-```bash
-python test_insight_face.py -s source_image.jpg -t target_image.jpg
-```
-
-## Command Line Arguments
 
 ### test_insight.py (Live Camera)
 
@@ -127,14 +115,14 @@ python test_insight_face.py -s source_image.jpg -t target_image.jpg
 
 The project uses the following pre-trained models:
 
-- **Face Detection & Swapping**: `inswapper_128_fp16.onnx`
+- **Face Detection & Swapping**: `inswapper_128.onnx`
   - Automatically downloaded on first run
   - Float16 precision for reduced memory usage
-  - Located in `Deep-Live-Cam/models/`
+  - Located in `./models/`
 
 - **Face Enhancement (Optional)**: `GFPGANv1.4.pth`
   - 2x upscaling with artifact removal
-  - Located in `Deep-Live-Cam/models/`
+  - Located in `./models/`
 
 ## Performance
 
@@ -202,13 +190,14 @@ deep-fake/
 ├── test_camera.py            # Simple camera viewer
 ├── test_insight_face.py      # Image-to-image swapping
 ├── inswapper_128.onnx        # Face swap model
-├── Deep-Live-Cam/            # Deep-Live-Cam project files
-│   ├── models/
-│   │   ├── GFPGANv1.4.pth   # Face enhancement model
-│   │   ├── inswapper_128.onnx
-│   │   └── inswapper_128_fp16.onnx
-│   └── ...
-└── requirements.txt          # Python dependencies
+├── ui_client.py              # client of cloud version
+├── ui_server.py              # server of cloud version
+├── models/
+|   ├── GFPGANv1.4.pth   # Face enhancement model
+│   ├── inswapper_128.onnx
+│   └── inswapper_128_fp16.onnx
+│   
+
 ```
 
 ## Limitations
