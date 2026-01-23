@@ -73,14 +73,18 @@ With GFPGAN enhancement:
 python test_insight.py -s source_image.jpg -m -e
 ```
 
-### Server and Client Version (Tkinter)
+### Server
 
 ```bash
 uvicorn ui_server:app --host 127.0.0.1 --port 8000
+
+```
+### Client
+
+```bash
+pip install opencv-python requests numpy pyvirtualcam
 python ui_client.py
 ```
-
-
 ### Simple Camera Viewer
 
 ```bash
