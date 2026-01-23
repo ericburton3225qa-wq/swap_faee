@@ -27,7 +27,7 @@ A real-time face swapping application using InsightFace and GFPGAN. This project
 
 ## Requirements
 
-- Python 3.8+
+- Python 3.12
 - OpenCV (cv2)
 - InsightFace >= 0.7
 - PyTorch
