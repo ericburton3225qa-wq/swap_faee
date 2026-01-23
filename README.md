@@ -27,7 +27,7 @@ A real-time face swapping application using InsightFace and GFPGAN. This project
 
 ## Requirements
 
-- Python 3.12
+- Python 3.12 (with tkinter for client)
 - OpenCV (cv2)
 - InsightFace >= 0.7
 - PyTorch
@@ -55,7 +55,6 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 ### Full Setup
 
 ```bash
-pip install -r requirements.txt  # If available
 # or manually:
 pip install opencv-python insightface>=0.7 torch gfpgan onnxruntime-gpu
 ```
